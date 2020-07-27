@@ -11,7 +11,7 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname+'/index.html'));
 });
 
-app.get('/pull', (req,res) => {
+app.post('/pull', (req,res) => {
     console.log('🚀️😁🚀️ Server Online on',PORT)
     exec("git pull", (error, stdout, stderr) => {
         if (error) {
