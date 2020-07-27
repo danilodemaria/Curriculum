@@ -3,9 +3,12 @@ const { exec } = require("child_process");
 var bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const Joi = require('joi')
 const app = express();
 const router = express.Router();
 const PORT = 3000;
+app.use(express.json())
+app.use(cors())
 
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({
