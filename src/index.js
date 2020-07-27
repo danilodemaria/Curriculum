@@ -1,17 +1,18 @@
 const express = require('express');
 const { exec } = require("child_process");
 var bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 const app = express();
 const router = express.Router();
-const PORT = 3000
+const PORT = 3000;
 
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({
     extended: false
  }));
  
- app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname+'/index.html'));
