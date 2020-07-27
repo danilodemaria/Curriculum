@@ -15,3 +15,7 @@ app.use('/', router);
 app.listen(PORT, ()=>{
     console.log('🚀️😁🚀️ Server Online on',PORT)
 });
+
+app.get('*',function (req, res) {
+    res.sendFile(path.join(__dirname+'/error.html'));
+  });
