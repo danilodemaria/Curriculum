@@ -12,6 +12,7 @@ app.get('/', (req,res) => {
 });
 
 app.get('/pull', (req,res) => {
+    console.log('🚀️😁🚀️ Server Online on',PORT)
     exec("git pull", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
@@ -23,6 +24,7 @@ app.get('/pull', (req,res) => {
         }
         console.log(`stdout: ${stdout}`);
     });
+    console.log('🚀️😁🚀️ Server Online on',PORT)
     res.send('Ok');
 });
 
