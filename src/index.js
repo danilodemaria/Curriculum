@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', (req,res) => {
+    countViews();
     res.sendFile(path.join(__dirname+'/index.html'));
 });
 
@@ -43,6 +44,17 @@ app.use('/', router);
 app.listen(PORT, ()=>{
     console.log('🚀️😁🚀️ Server Online on',PORT)
 });
+
+async function countViews(){
+    var fs = require('fs');
+    console.log('aqui')
+    try {  
+        var data = fs.readFileSync('files/views.txt', 'utf8');
+        console.log(data.toString());    
+    } catch(e) {
+        console.log('Error:', e.stack);
+    }
+}
 
 // app.get('*',function (req, res) {
 //     res.sendFile(path.join(__dirname+'/error.html'));

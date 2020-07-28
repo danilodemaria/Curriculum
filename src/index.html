@@ -283,7 +283,7 @@
                           Basta informar o CNPJ e mostra em tela ao usuário as informações públicas da empresa<br>
 
                           Busca CNPJ na PlayStore: <a href="https://play.google.com/store/apps/details?id=com.nullpointerdevelopers.vinicius.cnpjapp" target="_blank">Busca CNPJ - Link</a></span><br>
-                          <span class="margem"></span><br>                   
+                          <span id="demo" class="margem">Danilo</span><br>                   
                         </p>
                       </div>
                     </div>
@@ -307,7 +307,6 @@
                           <span class="margem"></span><span class="margem">Instagram: <a href="https://www.instagram.com/demariadanilo" target="_blank">https://www.instagram.com/demariadanilo</a></span><br>
                           <span class="margem"></span><span class="margem">Linkedin: <a href="https://www.linkedin.com/in/danilo-de-maria-017050b2" target="_blank">https://www.linkedin.com/in/danilo-de-maria-017050b2</a></span><br>
                           <span class="margem"></span><br>
-                          
                         </p>
                       </div>
                     </div>
@@ -316,14 +315,17 @@
         </div>
       </div>
 
-      <div class="row footer">
-        <div class="col-xs-7">
-          <p>danilo-de-maria\<span id="caminho">Readme.md</span></p>
-        </div>
-        <div class="col-xs-2">
-          <p>UTF-8 LF</p>
+      <div class="row footer">        
+        <div class="col-xs-3">
+          <p id="ip">IP</p>
         </div>
         <div class="col-xs-3">
+          <p id="access">ACESSO</p>
+        </div>
+        <div class="col-xs-4">
+          <p id="provider">PROVEDOR</p>
+        </div>
+        <div class="col-xs-2">
           <a href="https://github.com/danilodemaria" target="_blank" style="margin-top: 3px; margin-bottom: 3px">Fork me on GitHub <i class="fa fa-github fa-lg"></i></a>
         </div>
       </div>
@@ -353,9 +355,31 @@
 
     <script>
       for(x = 1; x <= 25; x++){
-        $(".colunaLinhas").append('<p class="linhas">'+ x +'</p>');
-      
+        $(".colunaLinhas").append('<p class="linhas">'+ x +'</p>');      
     </script>
+
+    <script type="text/javascript" src="//geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"></script>
+
+<script type="text/javascript">
+
+
+  var onSuccess = function(location){
+    document.getElementById("access").innerHTML = "Você está acessando da cidade de "+ location.city.names.en + ".";
+    document.getElementById("ip").innerHTML = "Seu endereço de IP é "+ location.traits.ip_address;
+    document.getElementById("provider").innerHTML = "Seu provedor de Internet é " +location.traits.organization;
+  };
+
+  var onError = function(error){
+    alert(
+        "Error:\n\n"
+        + JSON.stringify(error, undefined, 4)
+    );
+  };
+
+  geoip2.city(onSuccess, onError);
+
+</script>
+
 
   </body>
 </html>
